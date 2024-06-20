@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Restate.WebApi.Application\Restate.WebApi.Application.csproj" />
+    <ProjectReference Include="..\Restate.WebApi.Domain\Restate.WebApi.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
