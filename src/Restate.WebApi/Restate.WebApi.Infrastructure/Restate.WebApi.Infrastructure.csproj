@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+    <PackageReference Include="Sqids" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Restate.WebApi.Application\Restate.WebApi.Application.csproj" />
     <ProjectReference Include="..\Restate.WebApi.Domain\Restate.WebApi.Domain.csproj" />
   </ItemGroup>

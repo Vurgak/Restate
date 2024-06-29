@@ -12,10 +12,12 @@
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.1" />
     <PackageReference Include="Aspire.Hosting.NodeJs" Version="8.0.1" />
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="8.0.1" />
     <PackageReference Include="Aspire.Hosting.SqlServer" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Restate.WebApi\Restate.WebApi.MigrationService\Restate.WebApi.MigrationService.csproj" />
     <ProjectReference Include="..\Restate.WebApi\Restate.WebApi\Restate.WebApi.csproj" />
   </ItemGroup>
 

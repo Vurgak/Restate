@@ -11,13 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restate.AppHost", "src\Rest
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Restate.WebApi", "Restate.WebApi", "{CB6DDB36-3A09-47B4-9ACD-B7B826D8E609}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restate.WebApi", "src\Restate.WebApi\Restate.WebApi\Restate.WebApi.csproj", "{92956CB9-B75F-46CA-9A09-E7F0737985FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restate.WebApi", "src\Restate.WebApi\Restate.WebApi\Restate.WebApi.csproj", "{92956CB9-B75F-46CA-9A09-E7F0737985FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restate.WebApi.Application", "src\Restate.WebApi\Restate.WebApi.Application\Restate.WebApi.Application.csproj", "{C24C8D8F-3BDC-4559-B4FA-7094228455DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restate.WebApi.Application", "src\Restate.WebApi\Restate.WebApi.Application\Restate.WebApi.Application.csproj", "{C24C8D8F-3BDC-4559-B4FA-7094228455DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restate.WebApi.Infrastructure", "src\Restate.WebApi\Restate.WebApi.Infrastructure\Restate.WebApi.Infrastructure.csproj", "{B4087555-26CB-49D1-B76B-65C60CE99AD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restate.WebApi.Infrastructure", "src\Restate.WebApi\Restate.WebApi.Infrastructure\Restate.WebApi.Infrastructure.csproj", "{B4087555-26CB-49D1-B76B-65C60CE99AD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restate.WebApi.Domain", "src\Restate.WebApi\Restate.WebApi.Domain\Restate.WebApi.Domain.csproj", "{A1FE4251-7190-45F2-BB38-510D1AAAB1FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restate.WebApi.Domain", "src\Restate.WebApi\Restate.WebApi.Domain\Restate.WebApi.Domain.csproj", "{A1FE4251-7190-45F2-BB38-510D1AAAB1FB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restate.WebApi.MigrationService", "src\Restate.WebApi\Restate.WebApi.MigrationService\Restate.WebApi.MigrationService.csproj", "{F23795F8-75AC-4BDB-B515-FA2274EBFCB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{A1FE4251-7190-45F2-BB38-510D1AAAB1FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1FE4251-7190-45F2-BB38-510D1AAAB1FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1FE4251-7190-45F2-BB38-510D1AAAB1FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F23795F8-75AC-4BDB-B515-FA2274EBFCB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F23795F8-75AC-4BDB-B515-FA2274EBFCB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F23795F8-75AC-4BDB-B515-FA2274EBFCB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F23795F8-75AC-4BDB-B515-FA2274EBFCB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{C24C8D8F-3BDC-4559-B4FA-7094228455DD} = {CB6DDB36-3A09-47B4-9ACD-B7B826D8E609}
 		{B4087555-26CB-49D1-B76B-65C60CE99AD1} = {CB6DDB36-3A09-47B4-9ACD-B7B826D8E609}
 		{A1FE4251-7190-45F2-BB38-510D1AAAB1FB} = {CB6DDB36-3A09-47B4-9ACD-B7B826D8E609}
+		{F23795F8-75AC-4BDB-B515-FA2274EBFCB6} = {CB6DDB36-3A09-47B4-9ACD-B7B826D8E609}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33872617-48F9-4EC3-8233-51A486B7CCC4}
