@@ -6,6 +6,7 @@ public static class WebApplicationExtensions
     {
         application.UseHttpsRedirection();
         application.MapControllers();
+        application.UseExceptionHandler();
 
         if (application.Environment.IsDevelopment())
         {
