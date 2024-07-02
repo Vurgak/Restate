@@ -19,6 +19,9 @@ public class RestateWebApiFactory : WebApplicationFactory<IApiMarker>, IAsyncLif
         .WithCleanUp(true)
         .Build();
 
+    public IApplicationDbContext DatabaseContext { get; internal set; } = null!;
+    public DatabaseRespawner DatabaseRespawner { get; internal set; } = null!;
+
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.ConfigureTestServices(services =>
@@ -39,6 +42,15 @@ public class RestateWebApiFactory : WebApplicationFactory<IApiMarker>, IAsyncLif
 
         var dbContext = Services.GetRequiredService<ApplicationDbContext>();
         await dbContext.Database.MigrateAsync();
+        DatabaseContext = dbContext;
+
+        var dbConnection = dbContext.Database.GetDbConnection();
+        await dbConnection.OpenAsync();
+
+        DatabaseRespawner = new DatabaseRespawner(dbConnection);
+        await DatabaseRespawner.InitializeAsync();
+
+        await dbConnection.CloseAsync();
     }
 
     public new async Task DisposeAsync()

@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Restate.WebApi.Application.Abstractions.Persistence;
+﻿using Restate.WebApi.Application.Abstractions.Persistence;
 using Restate.WebApi.Application.Offers.CreateOffer;
 using Restate.WebApi.Application.Offers.GetOffer;
 using Restate.WebApi.Domain.Enums;
@@ -9,16 +8,25 @@ using System.Net.Http.Json;
 
 namespace Restate.WebApi.IntegrationTests;
 
-public class OffersControllerTests : IClassFixture<RestateWebApiFactory>
+public class OffersControllerTests : IClassFixture<RestateWebApiFactory>, IAsyncLifetime
 {
     private readonly HttpClient _client;
     private readonly IApplicationDbContext _dbContext;
+    private readonly DatabaseRespawner _respawner;
 
     public OffersControllerTests(RestateWebApiFactory apiFactory)
     {
         _client = apiFactory.CreateClient();
-        _dbContext = apiFactory.Services.GetRequiredService<IApplicationDbContext>();
+        _dbContext = apiFactory.DatabaseContext;
+        _respawner = apiFactory.DatabaseRespawner;
     }
+
+    public async Task InitializeAsync()
+    {
+        await _respawner.ResetAsync();
+    }
+
+    public Task DisposeAsync() => Task.CompletedTask;
 
     [Fact]
     public async void CreateOfferAsync_ShouldCreateOfferWithCreatedStatusCode_WhenRequestIsValid()
