@@ -2,11 +2,12 @@
 using MediatR;
 using Restate.WebApi.Application.Abstractions;
 using Restate.WebApi.Application.Abstractions.Persistence;
+using Restate.WebApi.Application.Offers.GetOffer;
 using Restate.WebApi.Domain.Entities;
 
 namespace Restate.WebApi.Application.Offers.CreateOffer;
 
-internal class CreateOfferCommandHandler : IRequestHandler<CreateOfferCommand, string?>
+internal class CreateOfferCommandHandler : IRequestHandler<CreateOfferCommand, GetOfferResult>
 {
     private readonly IApplicationDbContext _dbContext;
     private readonly IIdEncoder _idEncoder;
@@ -25,7 +26,7 @@ internal class CreateOfferCommandHandler : IRequestHandler<CreateOfferCommand, s
         _dateTimeProvider = dateTimeProvider;
     }
 
-    public async Task<string?> Handle(CreateOfferCommand command, CancellationToken cancellationToken)
+    public async Task<GetOfferResult> Handle(CreateOfferCommand command, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<OfferEntity>(command);
         entity.CreatedOn = _dateTimeProvider.UtcNow;
@@ -33,7 +34,8 @@ internal class CreateOfferCommandHandler : IRequestHandler<CreateOfferCommand, s
         await _dbContext.Offers.AddAsync(entity, cancellationToken);
         await _dbContext.SaveChangesAsync(cancellationToken);
 
-        var hashedId = _idEncoder.EncodeId(entity.Id);
-        return hashedId;
+        var result = _mapper.Map<GetOfferResult>(entity);
+        result.Id = _idEncoder.EncodeId(entity.Id);
+        return result;
     }
 }

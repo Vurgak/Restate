@@ -12,8 +12,8 @@ public class OffersController(ISender sender) : ControllerBase
 {
     [HttpGet]
     [ProducesResponseType(200)]
-    [ProducesResponseType<ProblemDetails>(400, "application/json+problems")]
-    [ProducesResponseType<ProblemDetails>(500, "application/json+problems")]
+    [ProducesResponseType<ProblemDetails>(400, "application/problem+json")]
+    [ProducesResponseType<ProblemDetails>(500, "application/problem+json")]
     public async Task<ActionResult<IEnumerable<GetOfferResult>>> GetOffersAsync([FromQuery] GetOffersQuery query, CancellationToken cancellationToken)
     {
         var offer = await sender.Send(query, cancellationToken);
@@ -22,8 +22,8 @@ public class OffersController(ISender sender) : ControllerBase
 
     [HttpGet("{OfferId}")]
     [ProducesResponseType(200)]
-    [ProducesResponseType<ProblemDetails>(400, "application/json+problems")]
-    [ProducesResponseType<ProblemDetails>(500, "application/json+problems")]
+    [ProducesResponseType<ProblemDetails>(400, "application/problem+json")]
+    [ProducesResponseType<ProblemDetails>(500, "application/problem+json")]
     public async Task<ActionResult<GetOfferResult>> GetOfferAsync([FromRoute] GetOfferQuery query, CancellationToken cancellationToken)
     {
         var offer = await sender.Send(query, cancellationToken);
@@ -32,11 +32,11 @@ public class OffersController(ISender sender) : ControllerBase
 
     [HttpPost]
     [ProducesResponseType(201)]
-    [ProducesResponseType<ProblemDetails>(400, "application/json+problems")]
-    [ProducesResponseType<ProblemDetails>(500, "application/json+problems")]
-    public async Task<ActionResult> CreateOfferAsync([FromBody] CreateOfferCommand command, CancellationToken cancellationToken)
+    [ProducesResponseType<ProblemDetails>(400, "application/problem+json")]
+    [ProducesResponseType<ProblemDetails>(500, "application/problem+json")]
+    public async Task<ActionResult<GetOfferResult>> CreateOfferAsync([FromBody] CreateOfferCommand command, CancellationToken cancellationToken)
     {
-        var offerId = await sender.Send(command, cancellationToken);
-        return CreatedAtAction(nameof(GetOfferAsync), new { offerId }, null);
+        var result = await sender.Send(command, cancellationToken);
+        return CreatedAtAction(nameof(GetOfferAsync), new { OfferId = result.Id }, result);
     }
 }

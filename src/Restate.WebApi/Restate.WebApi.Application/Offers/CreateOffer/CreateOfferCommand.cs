@@ -1,9 +1,10 @@
 ﻿using MediatR;
+using Restate.WebApi.Application.Offers.GetOffer;
 using Restate.WebApi.Domain.Enums;
 
 namespace Restate.WebApi.Application.Offers.CreateOffer;
 
-public class CreateOfferCommand : IRequest<string?>
+public class CreateOfferCommand : IRequest<GetOfferResult>
 {
     public string Title { get; set; } = string.Empty;
 
